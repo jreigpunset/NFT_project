@@ -1,8 +1,8 @@
 enum UrlRouter {
 
     HOME = "/",
-    MY_ACCOUNT = "/",
-    ADD_IDEA = "/",
+    MY_ACCOUNT = "/account",
+    ADD_IDEA = "/addidea",
     LOGIN = "/login",
     REGISTER = "/register"
 }

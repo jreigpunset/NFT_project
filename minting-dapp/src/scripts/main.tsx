@@ -3,15 +3,14 @@ import {mount, route } from 'navi';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import {Router} from 'react-navi';
-
-//registerpage
-//serviceWorker
 import Dapp from './react/Dapp';
 import Home from './react/Home';
 import CollectionConfig from '../../../smart-contract/config/CollectionConfig';
 import AddIdeaPage from '../pages/AddIdea'
 import LoginPage from '../Auth/LoginPage';
 import RegisterPage from '../Auth/RegisterPage';
+import { withAuthentication } from '../Auth/AuthenticatedRoute';
+import { NFT_PRO_IT_TOKEN_KEY } from '../Auth/Auth.api';
 
 /*
 const GlobalStyles = createGlobalStyle`
@@ -22,24 +21,29 @@ body {
 `;*/
 
 const routes = mount ({
- /*"/": route({
-   title :'Ideas',
-   //view : <IdeasPage/>
-  }),*/
-  /*"/add": route({
-  title :'add',
-  view : <AddIdeaPage/>
-  }),*/
-  /*"/me": WithAuthentication(route({
-    title :'My Account'
-  })),*/
   "/": route({
+    title :'Home',
+    view : <Home/>
+  }),
+  "/login": route({
     title :'Login',
     view : <LoginPage/>
   }),
   "/register": route({
-    title :'Ideas',
+    title :'Register',
     view : <RegisterPage/>
+  }),
+  "/mint": route({
+    title :'Mint',
+    view : <Dapp/>
+  }),
+  "/ideas": withAuthentication(route({
+    title :'Ideas',
+    view : <AddIdeaPage/>
+  })),
+  "/layout": route({
+    title :'test Page with layout',
+    view : <AddIdeaPage/>
   })
 })
 /*
@@ -61,7 +65,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
 
 document.addEventListener('DOMContentLoaded', async () => {
-  ReactDOM.render(<Router routes={routes}/>, document.getElementById('root'));
+  ReactDOM.render(<Router routes={routes} context = {{token:localStorage.getItem(NFT_PRO_IT_TOKEN_KEY)}}/>, document.getElementById('root'));
 });
 
 /*

@@ -1,5 +1,5 @@
 #root{
-    @apply flex flex-col gap-6;
+    /*@apply flex flex-col gap-6;
     @apply mt-6 mx-auto;
     @apply w-full;
     @apply max-w-md;
@@ -221,6 +221,22 @@
           @apply border-0;
         }
       }
-    }
+      .link-nav{
+        background-color:#f895a0;
+        text-transform:capitalize;
+        color: white;
+        min-width: 150 px;
+        text-align: center;
+        text-decoration: none;
+        padding: 16px;
+        border-radius: 32px;
+      }
+
+      .active-link-nav {
+        background-color:#f44e61;
+        
+
+      }
+    }*/
   }
   
